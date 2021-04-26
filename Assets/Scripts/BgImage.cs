@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +12,4 @@ public class BgImage : MonoBehaviour
         GetComponent<SpriteRenderer>().color = randomColor;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

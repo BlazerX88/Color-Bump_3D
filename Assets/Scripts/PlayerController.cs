@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds, bounds), transform.position.y, transform.position.z);
-        if (canMove)
-            transform.position += FindObjectOfType<CameraMovement>().CamVelocity;
+        if(canMove)
+            transform.position += FindObjectOfType<CameraMovement>().camVel;
 
-
-        if (!canMove && gameOver)
+        
+        if(!canMove && gameOver)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -35,14 +35,13 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
             }
-        }
-        else if (!canMove && !finish)
+        }else if (!canMove && !finish)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 FindObjectOfType<GameManager>().RemoveUI();
-             }
-            canMove = true;
+                canMove = true;
+            }
         }
 
     }
@@ -98,15 +97,15 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision target)
     {
-        if (target.gameObject.tag == "Enemy")
+        if(target.gameObject.tag == "Enemy")
         {
-            if (!gameOver) GameOver();
+            if(!gameOver) GameOver();
         }
     }
 
     void OnTriggerEnter(Collider target)
     {
-        if (target.gameObject.name == "Finish")
+        if(target.gameObject.name == "Finish")
         {
             StartCoroutine(NextLevel());
         }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class MoveLeftAndRight : MonoBehaviour
 
     void Update()
     {
-        if (!stop && !dontMove)
+        if(!stop && !dontMove)
         {
             if (right)
             {
@@ -37,7 +37,7 @@ public class MoveLeftAndRight : MonoBehaviour
 
     void OnCollisionEnter(Collision target)
     {
-        if (target.gameObject.tag == "White" && target.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1
+        if(target.gameObject.tag == "White" && target.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1 
             || target.gameObject.name == "Player")
         {
             stop = true;

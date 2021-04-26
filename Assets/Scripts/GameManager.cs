@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private int level;
     private float startDistance, distance;
-    private GameObject player, finish,hand;
+    private GameObject player, finish, hand;
 
     private TextMesh levelNo;
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
         player = GameObject.Find("Player");
         finish = GameObject.Find("Finish");
+        hand = GameObject.Find("Hand");
 
         levelNo = GameObject.Find("LevelNo").GetComponent<TextMesh>();
     }
@@ -39,13 +40,13 @@ public class GameManager : MonoBehaviour
         cLevelText.text = level.ToString();
 
         startDistance = Vector3.Distance(player.transform.position, finish.transform.position);
-        //SceneManager.LoadScene("level" + level);
+       // SceneManager.LoadScene("level" + level);
     }
 
     private void Update()
     {
         distance = Vector3.Distance(player.transform.position, finish.transform.position);
-        if(player.transform.position.z < finish.transform.position.z)
+        if (player.transform.position.z < finish.transform.position.z)
             fill.fillAmount = 1 - (distance / startDistance);
     }
 
